@@ -1,5 +1,5 @@
 # kaggle_forest_cover_type
-Code for kaggle forest type competition.
+Code for kaggle forest cover type competition.
 
 http://www.kaggle.com/c/forest-cover-type-prediction
 
