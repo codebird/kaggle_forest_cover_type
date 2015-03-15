@@ -66,17 +66,23 @@ if __name__ == "__main__":
   df_test['EHDtH'] = df_test['Elevation']-\
   df_test['Horizontal_Distance_To_Hydrology']*0.2
   
+  #Distance to Firepoints
+  df_train['DtoF']=df_train['Elevation']-\
+  df_train['Horizontal_Distance_To_Fire_Points']*0.2
+  df_test['DtoF']=df_test['Elevation']-\
+  df_test['Horizontal_Distance_To_Fire_Points']*0.2
+
   #Feature columns list    
   feature_cols = ['Elevation','EVDtH', 'EHDtH', 'Soil_Type',\
   'Wilderness_Area','Horizontal_Distance_To_Roadways',\
-  'Horizontal_Distance_To_Fire_Points','Hillshade_9am', 'DtoH', 'DtoR', \
+  'Horizontal_Distance_To_Fire_Points','Hillshade_9am', 'DtoH', 'DtoR', 'DtoF',\
   'Horizontal_Distance_To_Hydrology', 'Hillshade_Noon','Hillshade_3pm']
   
   #Initialize the estimator to be used in AdaBoost
   EC = ExtraTreesClassifier(criterion='entropy', n_jobs=-1,\
-  n_estimators = 500, max_features=None)
+  n_estimators = 500, max_features=None, min_samples_split=1)
   #Initialize AdaBoost
-  clf=AdaBoostClassifier(n_estimators=500, learning_rate=1, base_estimator=EC)
+  clf=AdaBoostClassifier(n_estimators=900, learning_rate=1, base_estimator=EC)
 
   #Create X_train, and X_test containing only our feature cols
   X_train = df_train[feature_cols]
