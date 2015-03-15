@@ -62,15 +62,15 @@ if __name__ == "__main__":
 
   #Create a new calculated feature EHDtH
   df_train['EHDtH'] = df_train['Elevation']-\
-  df_train['Horizontal_Distance_To_Hydrology']*0.2
+  df_train['Horizontal_Distance_To_Hydrology']
   df_test['EHDtH'] = df_test['Elevation']-\
-  df_test['Horizontal_Distance_To_Hydrology']*0.2
+  df_test['Horizontal_Distance_To_Hydrology']
   
   #Distance to Firepoints
   df_train['DtoF']=df_train['Elevation']-\
-  df_train['Horizontal_Distance_To_Fire_Points']*0.2
+  df_train['Horizontal_Distance_To_Fire_Points']
   df_test['DtoF']=df_test['Elevation']-\
-  df_test['Horizontal_Distance_To_Fire_Points']*0.2
+  df_test['Horizontal_Distance_To_Fire_Points']
 
   #Feature columns list    
   feature_cols = ['Elevation','EVDtH', 'EHDtH', 'Soil_Type',\
